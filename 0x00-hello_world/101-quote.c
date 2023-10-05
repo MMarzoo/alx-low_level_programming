@@ -1,18 +1,16 @@
-#include <stdio.h>
+#include <unistd.h>
 
 /**
- * main - Entry point
+ * main - Prints "and that piece of art is useful" - Dora Korpar, 2015-10-19",
+ *                followed by a new line, to standard error.
  *
- * Description: print a quote using write function
- *                 ssize_t write(int fd.const void *buf.size-t count);
- *   
- * Return: Always 1 (error)
+ * Return: Always 1.
  */
-
 int main(void)
 {
-	char quo[] = "and that piece of art is useful\" - Dora Korpar, 2015-10-19/n";
+	write(2,
+	      "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n",
+	      59);
 
-	write(1, quo, 59);
 	return (1);
 }
