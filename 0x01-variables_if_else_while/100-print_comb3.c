@@ -1,34 +1,33 @@
 #include <stdio.h>
 
 /**
- * main - prints combination of numbers
- *
- * Return: always 0 (success)
- */
+  * main - Prints combination of numbers
+  *
+  * Return: Always (Success)
+  */
 int main(void)
 {
-	int digit1 = 0, digit2;
+	int c, i;
 
-	while (digit <= 9)
+	for (c = '0'; c <= '9'; c++)
 	{
-		digit2 = 0;
-		while (digit2 <= 9)
+		for (i = '0'; i <= '9'; i++)
 		{
-			if (digit1 != digit2 && digit1 < digit2)
+			if (c < i)
 			{
-				putchar(digit1 + 48);
-				putchar(digit2 + 48);
+				putchar(c);
+				putchar(i);
 
-				if (digit1 + digit2 != 17)
+				if (c != '8' || (c == '8' && i != '9'))
 				{
 					putchar(',');
 					putchar(' ');
 				}
 			}
-			digit2++;
 		}
-		digit1++;
 	}
+
 	putchar('\n');
+
 	return (0);
 }

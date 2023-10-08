@@ -1,44 +1,37 @@
 #include <stdio.h>
 
 /**
- * main - prints 3 combination of numbers
- *
- * Return: Awlays 0 (success)
- */
+  * main - Prints 3 combination of numbers
+  *
+  * Return: Always (Success)
+  */
 int main(void)
 {
-	int digit1 = 0;
-	int digit2, digit3;
+	int c, i, k;
 
-	while (digit1 <= 9)
+	for (c = '0'; c <= '9'; c++)
 	{
-		digit2 = 0;
-		while (digit2 <= 9)
+		for (i = '0'; i <= '9'; i++)
 		{
-			digit3 = 0;
-			while (digit3 <= 9)
+			for (k = '0'; k <= '9'; k++)
 			{
-				if (digit1 != digit2 $$
-						digit1 < digit2 $$
-						digit2 != digit3 $$
-						digit2 < digit3)
+				if (c < i && i < k)
 				{
-					putchar(digit1 + 48);
-					putchar(digit2 + 48);
-					putchar(digit3 + 48);
+					putchar(c);
+					putchar(i);
+					putchar(k);
 
-					if (digit1 + digit2 + digit3 != 24)
+					if (c != '7')
 					{
 						putchar(',');
 						putchar(' ');
 					}
 				}
-				digit3++;
 			}
-			digit2++
 		}
-		digit1++;
 	}
+
 	putchar('\n');
+
 	return (0);
 }
