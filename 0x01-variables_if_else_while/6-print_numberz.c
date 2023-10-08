@@ -1,19 +1,20 @@
 #include <stdio.h>
 
 /**
- * main - print the number since 0 to 9
- *
- * Return: Always 0 (success)
- */
+  * main - Prints the numbers since 0 to 9
+  *
+  * Return: Always (Success)
+  */
 int main(void)
 {
-	int digit = '0';
+	int n;
 
-	while (digit <= '9')
+	for (n = '0'; n <= '9'; n++)
 	{
-		pitchar(digit + '0');
-		digit++;
+		putchar(n);
 	}
+
 	putchar('\n');
+
 	return (0);
 }
