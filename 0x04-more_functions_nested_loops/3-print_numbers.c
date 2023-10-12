@@ -1,17 +1,17 @@
 #include "main.h"
 
 /**
- * print_number - print 0 - 9 only using putchar twice
- *
- * Return: Always 0 (success)
+ * print_numbers - prints the numbers, from 0 to 9,
+ * followed by a new line
  */
-void print_number(void)
+void print_numbers(void)
 {
-	int a;
+	int i;
 
-	for (a = 0; a <= 9; a++)
+	for (i = 0; i < 10; i++)
 	{
-		_putchar(a + '0');
+		_putchar(i + '0');
 	}
+
 	_putchar('\n');
 }
