@@ -6,7 +6,7 @@
  */
 void print_all(const char * const format, ...)
 {
-	int i;
+	int i = 0;
 	char *str, *sep = "";
 
 	va_list list;
@@ -31,17 +31,18 @@ void print_all(const char * const format, ...)
 				case 's':
 					str = va_arg(list, char *);
 					if (!str)
-						str = "nil";
+						str = "(nil)";
 					printf("%s%s", sep, str);
-				break;
+					break;
 				default:
-			i++;
-		continue;
+					i++;
+					continue;
 			}
-		sep = ", ";
-	i++;
+			sep = ", ";
+			i++;
 		}
 	}
-printf("\n");
-va_end(list);
+
+	printf("\n");
+	va_end(list);
 }
