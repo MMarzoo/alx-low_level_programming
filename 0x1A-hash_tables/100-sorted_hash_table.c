@@ -8,8 +8,8 @@
  */
 shash_table_t *shash_table_create(unsigned long int size)
 {
-	unsigned long int i;
 	shash_table_t *sht;
+	unsigned long int i;
 
 	sht = malloc(sizeof(shash_table_t));
 	if (sht == NULL)
@@ -27,6 +27,7 @@ shash_table_t *shash_table_create(unsigned long int size)
 	{
 		sht->array[i] = NULL;
 	}
+	return (sht);
 }
 
 /**
@@ -77,7 +78,7 @@ void add_to_sorted_list(shash_table_t *table, shash_node_t *node)
 		return;
 	}
 	tmp = table->shead;
-	while (tmp!= NULL)
+	while (tmp != NULL)
 	{
 		if (strcmp(node->key, tmp->key) < 0)
 		{
@@ -85,7 +86,7 @@ void add_to_sorted_list(shash_table_t *table, shash_node_t *node)
 			node->sprev = tmp->sprev;
 			tmp->sprev = node;
 			if (node->sprev != NULL)
-				node->sprev->next = node;
+				node->sprev->snext = node;
 			else
 				table->shead = node;
 			return;
@@ -159,7 +160,7 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 	{
 		if (strcmp(tmp->key, key) == 0)
 			return (tmp->value);
-		tmp = tmp->value;
+		tmp = tmp->next;
 	}
 	return (NULL);
 }
@@ -173,7 +174,7 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 void shash_table_print(const shash_table_t *ht)
 {
 	shash_node_t *tmp;
-	char flag = 0;
+	char flag = 0; /* 0 before printing any data, 1 after*/
 
 	if (ht == NULL || ht->array == NULL)
 		return;
@@ -199,7 +200,7 @@ void shash_table_print(const shash_table_t *ht)
 void shash_table_print_rev(const shash_table_t *ht)
 {
 	shash_node_t *tmp;
-	char flag = 0;
+	char flag = 0; /* 0 before printing any data, 1 after*/
 
 	if (ht == NULL || ht->array == NULL)
 		return;
@@ -227,7 +228,7 @@ void shash_table_delete(shash_table_t *ht)
 	unsigned long int i;
 	shash_node_t *next;
 
-	if (ht == NULL || ht->array == NULL || ht->size == NULL)
+	if (ht == NULL || ht->array == NULL || ht->size == 0)
 		return;
 	for (i = 0; i < ht->size; i++)
 	{
