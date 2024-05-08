@@ -22,11 +22,11 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 		return (NULL);
 
 	step = 0;
-	size_step = sqrt(size);
+	step_size = sqrt(size);
 	for (node = jump = list; jump->index + 1 < size && jump->n < value;)
 	{
 		node = jump;
-		for (step += step_size; jump->index < step; jump = jump->index)
+		for (step += step_size; jump->index < step; jump = jump->next)
 		{
 			if (jump->index + 1 == size)
 				break;
